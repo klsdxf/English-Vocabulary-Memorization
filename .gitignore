@@ -1,0 +1,34 @@
+# Local learning data and credentials
+state.json
+speech-key.bin
+*.cet6backup
+*.db
+*.sqlite
+*.sqlite3
+*.wav
+*.mp3
+
+# Build and editor files
+bin/
+obj/
+.vs/
+*.pdb
+*.user
+*.suo
+
+# Temporary executable from packaging
+/*_六级词汇.exe
+
+# Local settings and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.pfx
+*.p12
+*.kdbx
+credentials*
+secrets*
+id_rsa
+id_ed25519

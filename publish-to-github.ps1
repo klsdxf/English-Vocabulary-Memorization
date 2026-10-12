@@ -53,6 +53,25 @@ try {
         throw '检查待提交改动失败。'
     }
 
+    if (-not $env:HTTPS_PROXY -and -not $env:https_proxy) {
+        $proxySettings = Get-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings' -ErrorAction SilentlyContinue
+        if ($proxySettings -and $proxySettings.ProxyEnable -and $proxySettings.ProxyServer) {
+            $proxyEntries = [string]$proxySettings.ProxyServer
+            $proxy = $null
+            if ($proxyEntries -match '(?:^|;)https=([^;]+)') {
+                $proxy = $Matches[1]
+            } elseif ($proxyEntries -match '(?:^|;)http=([^;]+)') {
+                $proxy = $Matches[1]
+            } elseif ($proxyEntries -notmatch '=') {
+                $proxy = $proxyEntries
+            }
+            if ($proxy) {
+                if ($proxy -notmatch '^[a-zA-Z][a-zA-Z0-9+.-]*://') { $proxy = 'http://' + $proxy }
+                $env:HTTPS_PROXY = $proxy
+            }
+        }
+    }
+
     & git push --set-upstream origin HEAD
     if ($LASTEXITCODE -ne 0) { throw '推送失败。请检查网络、GitHub 登录状态或仓库分支。' }
     Write-Host '已成功推送到 GitHub。' -ForegroundColor Green

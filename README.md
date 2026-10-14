@@ -1,181 +1,293 @@
-<div align="center">
-
+::: {align="center"}
 # 📚 English Vocabulary Memorization
 
-### See the word. Recall the meaning. Get the spelling right.
+### A simple vocabulary tool that helps you focus on remembering words.
 
-A focused Windows vocabulary companion for CET-6 preparation.<br>
-Study with context, practise by dictation, and return to the words that need another try.
+A minimalist Windows vocabulary companion designed for CET-6 learners.
+
+No complicated learning systems.\
+No unnecessary tasks.\
+Just read, recall, and verify.
+
+[English](README.md) \| [简体中文](README_zh-CN.md)
 
 [![Windows](https://img.shields.io/badge/Windows-10%20%2F%2011-0078D4?style=flat-square)](#quick-start)
-[![C%23](https://img.shields.io/badge/C%23-WPF-512BD4?style=flat-square)](#for-developers)
-[![Runtime](https://img.shields.io/badge/.NET%20Framework-4.7.2%2B-512BD4?style=flat-square)](#quick-start)
+[![C#](https://img.shields.io/badge/C%23-WPF-512BD4?style=flat-square)](#for-developers)
+[![.NET](https://img.shields.io/badge/.NET%20Framework-4.7.2%2B-512BD4?style=flat-square)](#quick-start)
 [![License](https://img.shields.io/badge/Code-MIT-22C55E?style=flat-square)](LICENSE.txt)
 
-**English · [简体中文](README_zh-CN.md)**
+[Get started](#quick-start) · [Explore features](#what-you-can-do) ·
+[For developers](#for-developers)
+:::
 
-[Get started](#quick-start) · [Explore features](#what-you-can-do) · [Import your words](#bring-your-own-vocabulary) · [Build from source](#for-developers)
+------------------------------------------------------------------------
 
-</div>
+## V2.0 Update
 
----
+Version 2.0 introduces:
 
-**V2.0 update:** 2,955 formal CET-6 entries with US IPA and bilingual examples; 20-word pages, English search and three notebook entries. Existing V1.7 profiles are backed up and merged automatically. Read the [upgrade and rollback guide](docs/V2.0升级与回退.md), [quality report](docs/V2.0词库质量报告.md) and [acceptance results](docs/V2.0验收报告.md). Code remains MIT; the new wordbook content is CC BY-SA 4.0 with a separate CMU pronunciation notice.
+-   2,955 formal CET-6 vocabulary entries
+-   US IPA pronunciation
+-   Bilingual example sentences
+-   20-word learning pages
+-   English search
+-   Three notebook entries
+-   Improved data migration and backup support
 
-## Make each study session count
+Existing V1.7 profiles are backed up and migrated automatically.
 
-Recognising a word is a start. Recalling its meaning and spelling it from a prompt give you something concrete to practise.
+------------------------------------------------------------------------
 
-**English Vocabulary Memorization**, also named **CET6Word** in the source, brings those steps into one desktop workflow: reveal a definition when you need it, read an example, listen to the word, then test yourself. Incorrect answers become a review list you can work through later.
+# Why This Project Exists
 
-Your vocabulary, notebooks and learning records stay on your computer. Everyday study requires no account or server; local pronunciation uses an installed Windows American English voice.
+Most vocabulary applications keep adding more and more features:
 
-## What you can do
+-   complicated learning plans
+-   multiple learning modes
+-   achievement systems
+-   forced review processes
+-   endless settings
 
-| Feature | What it gives you |
-| --- | --- |
-| 🧭 Pages and English search | Default 20 words per page; page jumps, arrow keys and a read-only search panel across the full formal wordbook. |
-| 📚 Three book entries | Original wordbook, favourites and dynamically recited words (current mastered status or last reliable correct dictation). |
-| 📖 Progressive reveal | Start with English only. Click to reveal the Chinese meaning, click again for the example, then collapse it. |
-| 🔊 Word and sentence audio | Play either independently; optionally enable automatic reading when you actively reveal a word. |
-| ✍️ Two dictation modes | Type the English spelling from a Chinese meaning or an audio prompt, with immediate feedback. |
-| 🎯 Focused mistake review | Retry the current round's mistakes or revisit saved incorrect words. The default review threshold is two consecutive correct answers and can be adjusted. |
-| ⭐ Personal notebooks | Use one-click favourites and create multiple notebooks for your own topics or study goals. |
-| ✅ Mastered-word controls | Remove familiar words from the study list and restore them whenever you want. |
-| 🔀 Pick up where you left off | Switch between fixed and random order; the app saves your order and reading position. |
-| 📥 Your own vocabulary | Import CSV or XLSX with a preview of valid entries, duplicates, invalid rows and missing examples. |
-| 💾 Persistent study records | Automatically save progress, resume unfinished dictation rounds, and export a complete backup for another computer. |
+But vocabulary learning itself is already difficult.
 
-### A study loop you control
+The learning tool should not become another thing users need to learn.
 
-1. **Recall first.** Browse the English-only list and try to remember the meaning.
-2. **Reveal with purpose.** Open the meaning and example; listen to the word or sentence.
-3. **Practise the spelling.** Choose recently studied words, a random selection, or a notebook for dictation.
-4. **Return to mistakes.** Review incorrect words and track consecutive correct answers.
+English Vocabulary Memorization follows one principle:
 
-“Recently studied” records words whose meanings or examples you actively reveal. Scrolling, favouriting, audio playback and the global translation switch do not count as active study.
+> A vocabulary app should help you remember words, not manage your
+> learning process.
 
-## Quick start
+------------------------------------------------------------------------
 
-### Run the included desktop app
+# Design Philosophy
 
-**Requirements:** Windows 10/11 and .NET Framework 4.7.2 or later. For local pronunciation, install an **English (United States)** speech voice in Windows if one is unavailable.
+## Minimalism: Return to the Core Task
 
-1. Use the **CET6Word-V2.0-Windows.zip** portable package delivered with this version. A source package needs rebuilding first.
-2. Extract the ZIP into a folder.
-3. Double-click **`六级词汇.exe`**. Keep `六级词汇.exe.config` beside it.
+The purpose of a vocabulary application is simple:
 
-You do not need Python, Node.js, Microsoft Excel or a .NET SDK to run the included app. The current application interface is in Simplified Chinese; this README provides English guidance.
+**Remember words.**
 
-### Your first session
+This project intentionally avoids unnecessary complexity.
 
-- Click a word's main text to reveal its meaning and example.
-- Use **发音** for the word and **朗读例句** for its example sentence.
-- Click **☆ / ★** to manage favourites, or **熟词** to mark a word as mastered.
-- Open **默写** to choose your word range, question count and Chinese or listening prompt.
-- Find mastered words, mistakes, vocabulary imports and settings under **更多**.
+Instead of complicated workflows, it focuses on two essential
+experiences.
 
-Automatic reading is off by default. Dictation ignores letter case and leading/trailing whitespace, but requires the correct spelling; it does not accept approximate spellings or alternative word forms.
+------------------------------------------------------------------------
 
-## Bring your own vocabulary
+# 📖 Memorization Page
 
-The formal collection contains **2,955 unique CET-6 entries** with part of speech, US IPA, Chinese definitions and bilingual examples. It draws primarily on the licensed OpenEtymology CET6 wordbook. It is not an official exhaustive exam syllabus. An upgrade also retains 47 unmatched older entries and their records outside the formal count.
+A focused environment for learning vocabulary.
 
-To study your own material, open **更多 → 词库管理 → 导入 CSV / XLSX**.
+You can:
 
-```csv
+-   review words
+-   understand meanings
+-   read examples
+-   listen to pronunciation
+
+No distractions.
+
+Just learning.
+
+------------------------------------------------------------------------
+
+# ✍️ Dictation Page
+
+Recognition is not mastery.
+
+A word that looks familiar is not necessarily a word you truly remember.
+
+The dictation page provides the final verification:
+
+> Can you actually recall and spell this word?
+
+Only words that pass dictation verification are considered mastered.
+
+------------------------------------------------------------------------
+
+# Giving Control Back to Learners
+
+Many vocabulary applications decide everything:
+
+-   when a word is learned
+-   how many reviews are required
+-   when a word can be marked mastered
+
+However, learning is personal.
+
+Different learners have different memories and study habits.
+
+This project gives control back to the learner:
+
+> You decide when you understand a word.\
+> The dictation system verifies whether you truly remember it.
+
+Freedom during learning.\
+Reliability during testing.
+
+------------------------------------------------------------------------
+
+# What You Can Do
+
+  Feature               Description
+  --------------------- ---------------------------------------------
+  Vocabulary Learning   Focused CET-6 vocabulary learning workflow
+  Progressive Reveal    Learn meaning and examples step by step
+  Pronunciation         Word and sentence audio playback
+  Dictation             Chinese-to-English and audio spelling tests
+  Mistake Review        Review words that need another try
+  Personal Notebooks    Manage favourites and custom collections
+  Progress Tracking     Save learning records locally
+  Import Vocabulary     Import your own CSV/XLSX word lists
+  Backup                Export and restore learning data
+
+------------------------------------------------------------------------
+
+# A Study Loop You Control
+
+1.  **Recall first**\
+    Try to remember the meaning before revealing the answer.
+
+2.  **Learn with context**\
+    Read definitions, examples and pronunciation.
+
+3.  **Verify by recall**\
+    Use dictation to test whether you truly remember.
+
+4.  **Return to mistakes**\
+    Review words that still need practice.
+
+------------------------------------------------------------------------
+
+# Quick Start
+
+## Requirements
+
+-   Windows 10/11
+-   .NET Framework 4.7.2 or later
+
+For pronunciation:
+
+Install an English (United States) Windows speech voice if unavailable.
+
+## Run
+
+1.  Download the portable package.
+2.  Extract the ZIP file.
+3.  Run:
+
+```{=html}
+<!-- -->
+```
+    六级词汇.exe
+
+No Python, Node.js or development tools are required.
+
+------------------------------------------------------------------------
+
+# Bring Your Own Vocabulary
+
+You can import your own vocabulary through:
+
+    更多 → 词库管理 → 导入 CSV / XLSX
+
+Example:
+
+``` csv
 word,meaning,example,example_translation
 adapt,适应,We adapt to new situations.,我们适应新的情况。
 ```
 
-| Column | Required | Content |
-| --- | --- | --- |
-| `word` | Yes | English word |
-| `meaning` | Yes | Chinese meaning |
-| `example` | No | English example sentence |
-| `example_translation` | No | Chinese translation of the example |
+Supported fields:
 
-Chinese headers such as `单词`, `释义`, `例句` and `例句翻译` are also supported.
+-   word
+-   meaning
+-   example
+-   example_translation
 
-- **CSV:** UTF-8, including BOM, or GB18030.
-- **XLSX:** the first worksheet; Microsoft Excel does not need to be installed. Convert older `.xls` files to `.xlsx` or `.csv` first.
-- **Duplicates:** compared without case sensitivity; the first valid entry is retained.
-- **Separate progress:** each import creates a new vocabulary collection. Identical spellings in different collections keep independent learning records.
-- **Limits:** 50 MB per import file and 100,000 entries across all collections.
+------------------------------------------------------------------------
 
-Start with the [CSV template](data/词库导入模板.csv), or explore the [included vocabulary CSV](data/六级原词书.csv). Import material you have permission to use. Details about the data are in the [vocabulary and licensing notes](docs/词库与授权说明.md).
+# Your Data Stays With You
 
-## Pronunciation, offline use and optional Azure Speech
+This application is local-first.
 
-Word and example playback use **American English at normal speed**. Without an online service, the app uses Windows `en-US` speech and caches the generated audio for reuse.
+Your:
 
-If you have an Azure Speech resource, enter your **region and service key** in **更多 → 设置与数据**. The implemented adapter uses `en-US-JennyNeural`, caches successful online audio, and falls back to Windows speech if the online request fails.
+-   vocabulary
+-   learning progress
+-   notebooks
+-   mistakes
+-   dictation history
 
-Online speech requires your own valid credentials and may incur provider charges. The repository's acceptance report documents adapter and fallback tests; it does not claim a live Azure account was verified. Missing local English speech voices can prevent playback until a suitable voice is installed.
+remain on your computer.
 
-## Your learning data stays with you
+No account required.
 
-The default data folder is **`%LOCALAPPDATA%\CET6Word`**. Learning records are stored separately from the executable, so moving or replacing the application folder does not remove them.
+No server required for daily learning.
 
-Use **更多 → 设置与数据** to export or restore a **`.cet6backup`** file.
+------------------------------------------------------------------------
 
-- **Included:** imported vocabulary, order and position, study records, mastered words, notebooks, dictation sessions and answers, mistake history, and preferences.
-- **Excluded:** regenerable audio caches and the online service key. Configure the key again on a new computer.
-- **Restore behaviour:** the backup replaces the current profile after validation; the app keeps a copy of the profile from before restoration.
+# For Developers
 
-The app also maintains a previous saved profile for recovery and prevents simultaneous writers to one data folder. Export regular backups when you want an independent copy or need to move computers.
+Built with:
 
-Azure keys are protected with Windows DPAPI for the current Windows user. Online speech sends the English text requested for playback, rather than uploading the complete learning profile.
+-   C#
+-   WPF
+-   .NET Framework
+-   JSON persistence
+-   System.Speech
+-   CSV/XLSX import support
 
-## For developers
+Build:
 
-The application uses **C# + WPF + .NET Framework**, with `System.Speech` for local audio, JSON for persistence, and ZIP/XML handling for XLSX imports. The build script compiles with the Roslyn compiler supplied by an installed .NET SDK.
-
-Rebuilding requires a Windows development environment with a **.NET SDK** and the **.NET Framework/WPF assemblies** used by `build.ps1`. Run the following from PowerShell in the repository root:
-
-```powershell
+``` powershell
 git clone https://github.com/klsdxf/English-Vocabulary-Memorization.git
+
 cd English-Vocabulary-Memorization
 
-# Build the desktop executable
 .\build.ps1
-
-# Run the project's automated tests
-.\build.ps1 -Test
-
-# Build and package portable/source archives into a chosen folder
-.\package.ps1 -Destination .\dist
 ```
 
-For a separate study or test profile:
+------------------------------------------------------------------------
 
-```powershell
-& '.\六级词汇.exe' --data-dir 'C:\CET6Word-Profile'
-```
+# Current Scope
 
-| Location | Purpose |
-| --- | --- |
-| `src/Core.cs` | Study state, notebooks, dictation and mistake-review rules |
-| `src/UI.cs` / `src/MainWindow.xaml` | WPF interface and user interactions |
-| `src/Storage.cs` | Persistence, backup validation and encrypted key storage |
-| `src/Imports.cs` | CSV/XLSX vocabulary import |
-| `src/Speech.cs` | Windows speech, optional Azure adapter and audio caching |
-| `data/` | Original starter vocabulary and import template |
-| `tests/` | Learning, storage, import, speech and UI tests |
-| `docs/` | Architecture, acceptance evidence and data licensing |
+The current version focuses on:
 
-## Current scope
+-   simple vocabulary learning
+-   active recall verification
+-   personal learning records
 
-The implemented review system tracks mistakes and consecutive correct answers. Scheduled spaced repetition (SRS), AI tutoring, cloud sync and mobile/web clients are not implemented. The documentation describes the existing Windows app rather than promising those features.
+The project intentionally avoids unnecessary complexity.
 
-For design choices and validation boundaries, read the [architecture notes](docs/V2.0实施清单.md) and [acceptance report](docs/V2.0验收报告.md), currently in Chinese.
+Future improvements will follow one principle:
 
-## Contribute and support
+> Add value, not complexity.
 
-Have a reproducible bug, an import edge case, or a way to make the study flow smoother? [Open an issue](https://github.com/klsdxf/English-Vocabulary-Memorization/issues) with the steps, expected behaviour and Windows/runtime details. Pull requests are welcome; run the project tests when changing application behaviour.
+------------------------------------------------------------------------
 
-If this app helps you build a vocabulary habit, a **⭐ Star** helps others discover it.
+# Contributing
 
-## License
+Suggestions and improvements are welcome.
 
-The project source code and its original vocabulary data are covered by the [MIT License](LICENSE.txt). Imported third-party vocabulary, Windows/.NET components and speech services remain subject to their own rights and terms.
+You can:
+
+-   report bugs
+-   suggest ideas
+-   submit pull requests
+
+------------------------------------------------------------------------
+
+# Support
+
+If this project matches your learning philosophy:
+
+⭐ Star this repository
+
+Your support helps more learners discover it.
+
+------------------------------------------------------------------------
+
+# License
+
+MIT License

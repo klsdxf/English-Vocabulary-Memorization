@@ -1,0 +1,34 @@
+{
+  "OpenEtymology": {
+    "url": "https://github.com/openetymology/OpenEtymology",
+    "commit": "7d89f3697abf26e305fe2627f181b692c2c10b28",
+    "license": "CC BY-SA 4.0 (wordbooks)",
+    "files": [
+      {
+        "name": "CET6.epub",
+        "sha256": "f3cee386eb02e9a75004147deec358f4fff91058bb85c168f00e9db85ef7b55a",
+        "url": "https://raw.githubusercontent.com/openetymology/OpenEtymology/7d89f3697abf26e305fe2627f181b692c2c10b28/CET6/CET6.epub"
+      },
+      {
+        "name": "CET4.epub",
+        "sha256": "878f104ef6e7ae1779cea3a3d4ff6f4db84c17841fba7ec375c359df89b7a1c7",
+        "url": "https://raw.githubusercontent.com/openetymology/OpenEtymology/7d89f3697abf26e305fe2627f181b692c2c10b28/CET4/CET4.epub"
+      },
+      {
+        "name": "TEM8.epub",
+        "sha256": "0db749f72a59853712dcbd7b5120c3ae8ee465658fe0262e3ce569793c387c3e",
+        "url": "https://raw.githubusercontent.com/openetymology/OpenEtymology/7d89f3697abf26e305fe2627f181b692c2c10b28/TEM8/TEM8.epub"
+      }
+    ]
+  },
+  "CMUdict": {
+    "url": "https://github.com/cmusphinx/cmudict",
+    "commit": "74790861f652b15e4ac49015a90074ad62a27690",
+    "license": "CMU permissive notice"
+  },
+  "cross_reference": {
+    "url": "https://github.com/KyleBing/english-vocabulary",
+    "commit": "c4c6c80879ff17d7025c28fb853a4991c8e6be6a",
+    "usage": "headword membership only; no commercial dictionary text"
+  }
+}

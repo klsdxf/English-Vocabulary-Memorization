@@ -1,0 +1,37 @@
+{
+  "scope": "Real V1.7 profile COPY; production file is unchanged. No user personal data shipped.",
+  "before": {
+    "libraries": 1,
+    "native_words": 348,
+    "notebooks": 1,
+    "memberships": 0,
+    "learned": 0,
+    "mastered": 0,
+    "sessions": 0,
+    "attempts": 0,
+    "errors": 0
+  },
+  "after": {
+    "libraries": 1,
+    "native_words": 3002,
+    "notebooks": 1,
+    "memberships": 0,
+    "learned": 0,
+    "mastered": 0,
+    "sessions": 0,
+    "attempts": 0,
+    "errors": 0
+  },
+  "formal_words": 2955,
+  "mapping": {
+    "Matched": 301,
+    "Unmatched": 47,
+    "Added": 2654,
+    "Conflicts": []
+  },
+  "all_old_word_ids_preserved": true,
+  "all_personal_records_semantically_equal": true,
+  "backup_checksum_verified": true,
+  "original_file_unchanged": true,
+  "note": "Real profile contains no quiz/learning history; populated synthetic migration and incomplete legacy fixtures are tested separately."
+}

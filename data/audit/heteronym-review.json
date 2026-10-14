@@ -1,0 +1,45 @@
+{
+  "review_type": "AI/developer linguistic review, not external human review",
+  "words": {
+    "abstract": {
+      "adj.": "/ˈæbˌstɹækt/",
+      "n.": "/ˈæbˌstɹækt/",
+      "vt.": "/æbˈstɹækt/"
+    },
+    "conduct": {
+      "n.": "/ˈkɑndəkt/",
+      "v.": "/kɑnˈdʌkt/"
+    },
+    "object": {
+      "n.": "/ˈɑbdʒɛkt/",
+      "vt.": "/əbˈdʒɛkt/",
+      "vi.": "/əbˈdʒɛkt/"
+    },
+    "project": {
+      "n.": "/ˈpɹɑdʒɛkt/",
+      "vt.": "/pɹəˈdʒɛkt/",
+      "vi.": "/pɹəˈdʒɛkt/"
+    },
+    "content": {
+      "n.": "/ˈkɑntɛnt/",
+      "adj.": "/kənˈtɛnt/",
+      "vt.": "/kənˈtɛnt/"
+    },
+    "present": {
+      "n.": "/ˈpɹɛzənt/",
+      "adj.": "/ˈpɹɛzənt/",
+      "vt.": "/pɹiˈzɛnt/ · /pɚˈzɛnt/"
+    },
+    "subject": {
+      "n.": "/ˈsʌbdʒɪkt/",
+      "adj.": "/ˈsʌbdʒɪkt/",
+      "vt.": "/səbˈdʒɛkt/"
+    },
+    "wind": {
+      "n.": "/ˈwɪnd/",
+      "vt.": "/ˈwaɪnd/ · /ˈwɪnd/",
+      "vi.": "/ˈwaɪnd/"
+    }
+  },
+  "note": "CMU variants retained; wind verb senses may have either vowel. No UK IPA relabeled US."
+}

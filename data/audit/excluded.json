@@ -1,0 +1,53 @@
+[
+  {
+    "word": "analyse",
+    "book": "CET6",
+    "reasons": [
+      "US_pronunciation_unverified"
+    ]
+  },
+  {
+    "word": "analyse",
+    "book": "CET4",
+    "reasons": [
+      "US_pronunciation_unverified"
+    ]
+  },
+  {
+    "word": "check",
+    "book": "CET4",
+    "reasons": [
+      "POS_or_definition",
+      "example_alignment_unverified"
+    ]
+  },
+  {
+    "word": "spot",
+    "book": "CET4",
+    "reasons": [
+      "POS_or_definition",
+      "example_alignment_unverified"
+    ]
+  },
+  {
+    "word": "waggon",
+    "book": "CET4",
+    "reasons": [
+      "US_pronunciation_unverified"
+    ]
+  },
+  {
+    "word": "entreat",
+    "book": "TEM8",
+    "reasons": [
+      "US_pronunciation_unverified"
+    ]
+  },
+  {
+    "word": "nought",
+    "book": "TEM8",
+    "reasons": [
+      "US_pronunciation_unverified"
+    ]
+  }
+]

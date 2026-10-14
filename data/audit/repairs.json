@@ -1,0 +1,29 @@
+{
+  "normalizations": [
+    "modal v. → modal.",
+    "int. → interj.",
+    "cling/clung, wring/wrung inflection recognized"
+  ],
+  "shared_sentences": [
+    {
+      "word": "zinc",
+      "action": "removed_shared_example",
+      "english": "Brass is an alloy of copper and zinc."
+    },
+    {
+      "word": "forecast",
+      "action": "removed_shared_example",
+      "english": "The weather forecast predicts heavy rain tomorrow."
+    },
+    {
+      "word": "nose",
+      "action": "removed_shared_example",
+      "english": "She wrinkled her nose at the strange smell."
+    },
+    {
+      "word": "rotate",
+      "action": "removed_shared_example",
+      "english": "The Earth rotates on its axis every 24 hours."
+    }
+  ]
+}

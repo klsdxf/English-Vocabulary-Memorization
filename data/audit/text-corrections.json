@@ -1,0 +1,10 @@
+[
+  {
+    "word": "abandon",
+    "english": "The crew had to abandon the sinking ship.",
+    "before": "船员不得不弃离沉船。",
+    "after": "船员不得不撤离正在下沉的船。",
+    "reason": "Replace unnatural Chinese 弃离沉船 with a natural translation retaining crew, necessity and sinking ship.",
+    "review": "AI/developer language review; not external human review"
+  }
+]

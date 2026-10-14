@@ -1,0 +1,83 @@
+PASS V2 formal corpus: 2800–3200 unique words with all six fields
+PASS first-run defaults: translation and automatic reading off
+PASS expansion: hidden > meaning > example > hidden
+PASS global translation does not force examples
+PASS passive browsing has no learned candidates
+PASS active learning deduplicates and uses latest expansion time
+PASS mastering removes word and restoring preserves original order
+PASS favorites toggle and do not move anchor or count as study
+PASS one word belongs to multiple books; deleting book keeps word
+PASS default book protected; duplicate and blank names rejected
+PASS random order is a permutation and survives serialization
+PASS fixed sorting returns source order and maps anchor
+PASS quiz ranges: all, learned, named notebook
+PASS recent X uses actual available size; empty and invalid sizes rejected
+PASS Chinese and listening quiz retain prompt setting
+PASS wrong answer creates separate error, reveals spelling data, no favorite
+PASS grading normalizes case and outer whitespace only
+PASS submitted feedback and unsubmitted next question survive reload
+PASS results count errors; retries include only this round's wrong words
+PASS default two correct removes pending error but keeps history
+PASS custom threshold and correct-wrong-correct reset streak
+PASS manual error remove and restore preserve attempts and wrong count
+PASS CSV: BOM aliases quoted commas escaped quotes multiline example
+PASS CSV: duplicates rejected rows missing examples reported
+PASS CSV: malformed quoting missing columns and empty data rejected
+PASS CSV: UTF8 and GB18030 files import correctly
+PASS XLSX: inline strings and shared rich strings with sparse columns
+PASS imported same-spelling word has independent progress and positions
+PASS atomic save and reopen preserve learned/mastered/books/random/threshold
+PASS single-instance lock prevents concurrent writers
+PASS corrupt main recovers previous valid state and preserves damaged file
+PASS unrecoverable corruption never silently resets data
+PASS full backup restores exact complete state into a new directory
+PASS backup tamper and invalid word references rejected without changing state
+PASS unsupported schema and invalid session order rejected
+PASS encrypted speech key roundtrip and backup excludes plaintext secret
+PASS online WAV is cached; next playback avoids provider request
+PASS Azure adapter real HTTP: correct endpoint, auth, US voice, SSML, WAV cache
+PASS Azure adapter real HTTP unauthorized response falls back locally
+PASS online failure falls back to cached local US WAV
+PASS invalid online audio falls back; absent voice returns explicit failure
+Installed voices: Microsoft Huihui Desktop/zh-CN/enabled=True, Microsoft Zira Desktop/en-US/enabled=True
+STA voice bytes=69918
+PASS real Windows en-US speech synthesizes a valid WAV
+PASS unsafe online region rejected; cache keys separate region and text
+PASS MIG: merge all old IDs, unmatched entries, custom data and records without loss
+PASS MIG: repeated upgrade is idempotent
+PASS MIG: full raw backup verified, new disk state verified, source hash recorded
+PASS MIG: failed atomic commit keeps old state and readable backup
+PASS MIG: same spelling across libraries and identity conflicts do not merge
+PASS MIG: incomplete legacy answers remain unknown and raw history survives
+PASS MIG: participation-only and timestamp-less master evidence stay conservative
+PASS MIG/REC: a new reliable answer supersedes timeless captured history without inventing dates
+PASS REC: first correct qualifies, later wrong removes, master overrides wrong
+PASS REC: active learning is not success; recent timestamps and unknown fallback stable
+PASS SEARCH: full formal book substring includes mastered; no state mutations
+PASS BR: anchor migration, page jumps, size bounds and last/empty pages
+PASS BR: mastery fills current page and restores fixed/random without reshuffling
+PASS WPF startup: one column, hidden translations, no automatic playback
+PASS WPF routed row click: progressive expansion and only active learning saved
+PASS WPF global toggle: show meanings without examples or new learning
+PASS WPF word/example speakers and favorites do not trigger expansion
+PASS WPF auto reading: user expands word then sentence; page entry stays silent
+PASS WPF mastered row removal, collection page, and manual restoration
+PASS WPF scroll only: saved anchor but no new active-learning records
+PASS WPF random sorting and real window close/reopen restore order and position
+PASS WPF Chinese quiz: wrong answer feedback, result, separate persisted error
+PASS WPF retry only wrong words, then two correct rounds remove pending error
+PASS WPF listening quiz: automatic word audio but no answer leakage
+PASS WPF error history, threshold editing, and vocabulary manager render
+PASS WPF mastering current word midway preserves next neighbor and scroll
+PASS WPF library dropdown keeps independent valid anchors on switch
+PASS WPF close flushes complete quiz and settings history to disk
+PASS V2 WPF: page jump, invalid input, per-page sizes and rapid arrows
+PASS V2 WPF: live search, read-only details, every sentence audio, preserved study page
+PASS V2 WPF: three book entries, original independent pagination and passive viewing
+PASS V2 WPF: favorite page sizes shared, notebook pages retained independently
+PASS V2 WPF: recited dynamic filters and original mastery synchronize
+PASS V2 WPF: original favorite actions retain expanded details and sync status
+PASS V2 WPF: all eight nonblocking motion triggers run on the real WPF tree
+PASS V2 WPF: 10/20/30/50 study sizes compute pages, scrolling never flips
+PASS V2 WPF: direct startup page/order/size/scroll restoration, no automatic audio
+RESULT: 80 passed, 0 failed

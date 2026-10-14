@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Collections.Generic;
+using System.Collections;
 using System.Text;
 using System.Security.Cryptography;
 using System.Web.Script.Serialization;
@@ -16,7 +17,9 @@ namespace CET6Word {
   public StateStore(string path,bool lockInstance=true) { DirectoryPath=Path.GetFullPath(path);Directory.CreateDirectory(DirectoryPath);if(lockInstance) try {instanceLock=new FileStream(Path.Combine(DirectoryPath,"instance.lock"),FileMode.OpenOrCreate,FileAccess.ReadWrite,FileShare.None);}catch(IOException){throw new IOException("此数据目录已有程序在运行，请使用已打开的窗口。");} }
   public static JavaScriptSerializer Json() {return new JavaScriptSerializer {MaxJsonLength=128*1024*1024,RecursionLimit=120};}
   public static string Encode(AppState state) {return Json().Serialize(state);}
-  public static AppState Decode(string data) {var state=Json().Deserialize<AppState>(data);Validate(state);return state;}
+  static object Ordered(object value){var dictionary=value as IDictionary<string,object>;if(dictionary!=null){var sorted=new SortedDictionary<string,object>(StringComparer.Ordinal);foreach(var item in dictionary)sorted[item.Key]=Ordered(item.Value);return sorted;}var sequence=value as IEnumerable;if(sequence!=null && !(value is string))return sequence.Cast<object>().Select(Ordered).ToArray();return value;}
+  public static bool Equivalent(string first,string second){return Json().Serialize(Ordered(Json().DeserializeObject(first)))==Json().Serialize(Ordered(Json().DeserializeObject(second)));}
+  public static AppState Decode(string data) {var state=Json().Deserialize<AppState>(data);if(state!=null)UpgradeMigration.NormalizeLegacy(state,data);Validate(state);return state;}
   public AppState Load(Func<AppState> create) {
    if(!File.Exists(FilePath)){var initial=create();Save(initial);return initial;}
    try {return Decode(ReadBounded(FilePath));}
@@ -38,12 +41,13 @@ namespace CET6Word {
   static string Hash(string text) {using(var sha=SHA256.Create())return BitConverter.ToString(sha.ComputeHash(Encoding.UTF8.GetBytes(text))).Replace("-","").ToLowerInvariant();}
   public void Export(string path,AppState state) {
    if(Path.GetFullPath(path).Equals(FilePath,StringComparison.OrdinalIgnoreCase))throw new ArgumentException("请勿覆盖正在使用的档案。");
-   string data=Encode(state);var b=new BackupEnvelope {Format="CET6Word.FullBackup",Version=1,CreatedUtc=DateTime.UtcNow.ToString("o"),Sha256=Hash(data),Data=data};AtomicWrite(path,Json().Serialize(b),false);
+   ExportRaw(path,Encode(state));
   }
+  public void ExportRaw(string path,string data){if(Path.GetFullPath(path).Equals(FilePath,StringComparison.OrdinalIgnoreCase))throw new ArgumentException("请勿覆盖正在使用的档案。");Decode(data);var b=new BackupEnvelope {Format="CET6Word.FullBackup",Version=1,CreatedUtc=DateTime.UtcNow.ToString("o"),Sha256=Hash(data),Data=data};AtomicWrite(path,Json().Serialize(b),false);}
   public AppState ReadBackup(string path) {var b=Json().Deserialize<BackupEnvelope>(ReadBounded(path));if(b==null || b.Format!="CET6Word.FullBackup" || b.Version!=1 || b.Data==null || b.Sha256!=Hash(b.Data))throw new InvalidDataException("备份格式、版本或校验码不正确。");return Decode(b.Data);}
   public void Restore(AppState restored) {Validate(restored);if(File.Exists(FilePath))File.Copy(FilePath,Path.Combine(DirectoryPath,"before-restore-"+DateTime.Now.ToString("yyyyMMdd-HHmmssfff")+".json"));Save(restored);}
   public static void Validate(AppState s) {
-   if(s==null || s.SchemaVersion!=1)throw new InvalidDataException("不支持的档案版本。");
+   if(s==null || (s.SchemaVersion!=1 && s.SchemaVersion!=2))throw new InvalidDataException("不支持的档案版本。");
    if(s.Settings==null || s.Vocabularies==null || s.Progress==null || s.Positions==null || s.Notebooks==null || s.Errors==null || s.Sessions==null)throw new InvalidDataException("档案缺少必要的数据。");
    if(s.Settings.ErrorThreshold<1 || s.Settings.ErrorThreshold>100)throw new InvalidDataException("错词阈值需为 1–100。");
    if(s.Vocabularies.Count<1 || s.Vocabularies.Count>1000)throw new InvalidDataException("词库数量异常。");
@@ -59,7 +63,10 @@ namespace CET6Word {
    var books=new HashSet<string>();foreach(var b in s.Notebooks)if(b==null || String.IsNullOrWhiteSpace(b.Id) || !books.Add(b.Id) || String.IsNullOrWhiteSpace(b.Name) || b.Words==null || b.Words.Distinct().Count()!=b.Words.Count || b.Words.Any(id=>!words.Contains(id)))throw new InvalidDataException("单词本关联无效。");
    if(!books.Contains("default"))throw new InvalidDataException("默认收藏缺失。");
    foreach(var e in s.Errors)if(!words.Contains(e.Key) || e.Value==null || e.Value.Streak<0 || e.Value.WrongCount<1 || e.Value.PracticeCount<e.Value.WrongCount || e.Value.Events==null || e.Value.Events.Any(x=>x==null || x.At<0 || x.Action==null))throw new InvalidDataException("错词记录无效。");
-   var sessions=new HashSet<string>();foreach(var q in s.Sessions){if(q==null || String.IsNullOrEmpty(q.Id) || !sessions.Add(q.Id) || !vocabIds.Contains(q.VocabularyId) || q.Words==null || q.Words.Count==0 || q.Attempts==null || q.Attempts.Count>q.Words.Count || q.Words.Distinct().Count()!=q.Words.Count || q.Words.Any(id=>!vocabWords[q.VocabularyId].Contains(id)) || (q.AwaitingNext && q.Attempts.Count==0) || (q.Finished==0 && q.Attempts.Count==q.Words.Count && !q.AwaitingNext))throw new InvalidDataException("默写轮次无效。");for(int i=0;i<q.Attempts.Count;i++){var a=q.Attempts[i];if(a==null || a.WordId!=q.Words[i] || a.Answer==null || a.At<0 || a.Correct!=Policy.AnswerMatches(wordIndex[a.WordId].English,a.Answer))throw new InvalidDataException("默写作答记录无效。");}}
+   var sessions=new HashSet<string>();foreach(var q in s.Sessions){
+    if(q!=null && q.LegacyIncomplete && !String.IsNullOrEmpty(q.LegacyRecordJson)){if(String.IsNullOrEmpty(q.Id) || !sessions.Add(q.Id))throw new InvalidDataException("旧轮次标识无效。");continue;}
+    if(q==null || String.IsNullOrEmpty(q.Id) || !sessions.Add(q.Id) || !vocabIds.Contains(q.VocabularyId) || q.Words==null || q.Words.Count==0 || q.Attempts==null || q.Attempts.Count>q.Words.Count || q.Words.Distinct().Count()!=q.Words.Count || q.Words.Any(id=>!vocabWords[q.VocabularyId].Contains(id)) || (q.AwaitingNext && q.Attempts.Count==0) || (q.Finished==0 && q.Attempts.Count==q.Words.Count && !q.AwaitingNext))throw new InvalidDataException("默写轮次无效。");for(int i=0;i<q.Attempts.Count;i++){var a=q.Attempts[i];if(a==null || a.WordId!=q.Words[i] || a.Answer==null || a.At<0 || !a.ResultKnown || a.Correct!=Policy.AnswerMatches(wordIndex[a.WordId].English,a.Answer))throw new InvalidDataException("默写作答记录无效。");}}
+   if(s.SchemaVersion==2){if(s.Reading==null || s.Reading.Positions==null || s.Migrations==null || new[]{s.Reading.StudySize,s.Reading.OriginalSize,s.Reading.FavoriteSize,s.Reading.RecitedSize}.Any(n=>n<1 || n>200) || s.Reading.Positions.Any(p=>p.Value==null || p.Value.Page<1 || p.Value.InPageOffset<0 || (p.Value.Anchor!=null && !words.Contains(p.Value.Anchor))))throw new InvalidDataException("分页档案无效。");}
    if(s.ActiveSession!=null && !sessions.Contains(s.ActiveSession))throw new InvalidDataException("当前默写轮次缺失。");
   }
   public void SaveKey(string key) {string path=Path.Combine(DirectoryPath,"speech-key.bin");byte[] data=ProtectedData.Protect(Encoding.UTF8.GetBytes(key??""),null,DataProtectionScope.CurrentUser);File.WriteAllBytes(path,data);}

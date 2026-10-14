@@ -1,0 +1,17 @@
+[
+  {
+    "before": "thanksgiving",
+    "after": "Thanksgiving",
+    "reason": "Retain licensed source capitalization for proper-name core sense; IDs and source order unchanged."
+  },
+  {
+    "before": "christian",
+    "after": "Christian",
+    "reason": "Retain licensed source capitalization for proper-name core sense; IDs and source order unchanged."
+  },
+  {
+    "before": "roman",
+    "after": "Roman",
+    "reason": "Retain licensed source capitalization for proper-name core sense; IDs and source order unchanged."
+  }
+]

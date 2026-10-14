@@ -1,0 +1,53 @@
+{
+  "formal_words": 2955,
+  "within_2800_3200": true,
+  "field_completeness": {
+    "word": {
+      "count": 2955,
+      "percent": 100.0
+    },
+    "pos": {
+      "count": 2955,
+      "percent": 100.0
+    },
+    "us_ipa": {
+      "count": 2955,
+      "percent": 100.0
+    },
+    "meaning": {
+      "count": 2955,
+      "percent": 100.0
+    },
+    "example": {
+      "count": 2955,
+      "percent": 100.0
+    },
+    "translation": {
+      "count": 2955,
+      "percent": 100.0
+    }
+  },
+  "unique_english_examples": 8737,
+  "source_books": {
+    "CET6": 2216,
+    "CET4": 564,
+    "TEM8": 175
+  },
+  "blocking_issues": [],
+  "issue_counts": {},
+  "multiple_US_variants": 476,
+  "human_reviewed_words": 0,
+  "AI_developer_heteronym_reviews": 8,
+  "AI_text_corrections": 1,
+  "excluded_unique_words": 6,
+  "old_matched": 301,
+  "old_unmatched": 47,
+  "sha256": "ee84f3c75642b7d9e0692b6969cfbdab2076ffb2304b3c2b3a915c90ca7a2505",
+  "limitations": [
+    "Source-aligned bilingual pairs are not a proof of translation accuracy. No claim of all-human review.",
+    "POS and senses checked against licensed source, not an independently licensed bilingual dictionary.",
+    "CMU US phonemes converted to broad IPA; stress placement uses maximal onset and variants are retained.",
+    "Grammar checks detect repeated tokens/template gaps and target-word usage only; they do not prove all sentences grammatical.",
+    "ExampleIndexes link literal Chinese phrases only; missing indices leave examples at word level without guessed sense assignment."
+  ]
+}

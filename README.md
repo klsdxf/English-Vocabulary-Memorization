@@ -10,7 +10,7 @@ Study with context, practise by dictation, and return to the words that need ano
 [![Windows](https://img.shields.io/badge/Windows-10%20%2F%2011-0078D4?style=flat-square)](#quick-start)
 [![C%23](https://img.shields.io/badge/C%23-WPF-512BD4?style=flat-square)](#for-developers)
 [![Runtime](https://img.shields.io/badge/.NET%20Framework-4.7.2%2B-512BD4?style=flat-square)](#quick-start)
-[![License](https://img.shields.io/badge/License-MIT-22C55E?style=flat-square)](LICENSE.txt)
+[![License](https://img.shields.io/badge/Code-MIT-22C55E?style=flat-square)](LICENSE.txt)
 
 **English · [简体中文](README_zh-CN.md)**
 
@@ -19,6 +19,8 @@ Study with context, practise by dictation, and return to the words that need ano
 </div>
 
 ---
+
+**V2.0 update:** 2,955 formal CET-6 entries with US IPA and bilingual examples; 20-word pages, English search and three notebook entries. Existing V1.7 profiles are backed up and merged automatically. Read the [upgrade and rollback guide](docs/V2.0升级与回退.md), [quality report](docs/V2.0词库质量报告.md) and [acceptance results](docs/V2.0验收报告.md). Code remains MIT; the new wordbook content is CC BY-SA 4.0 with a separate CMU pronunciation notice.
 
 ## Make each study session count
 
@@ -32,6 +34,8 @@ Your vocabulary, notebooks and learning records stay on your computer. Everyday 
 
 | Feature | What it gives you |
 | --- | --- |
+| 🧭 Pages and English search | Default 20 words per page; page jumps, arrow keys and a read-only search panel across the full formal wordbook. |
+| 📚 Three book entries | Original wordbook, favourites and dynamically recited words (current mastered status or last reliable correct dictation). |
 | 📖 Progressive reveal | Start with English only. Click to reveal the Chinese meaning, click again for the example, then collapse it. |
 | 🔊 Word and sentence audio | Play either independently; optionally enable automatic reading when you actively reveal a word. |
 | ✍️ Two dictation modes | Type the English spelling from a Chinese meaning or an audio prompt, with immediate feedback. |
@@ -57,7 +61,7 @@ Your vocabulary, notebooks and learning records stay on your computer. Everyday 
 
 **Requirements:** Windows 10/11 and .NET Framework 4.7.2 or later. For local pronunciation, install an **English (United States)** speech voice in Windows if one is unavailable.
 
-1. Open the [repository](https://github.com/klsdxf/English-Vocabulary-Memorization) and choose **Code → Download ZIP**.
+1. Use the **CET6Word-V2.0-Windows.zip** portable package delivered with this version. A source package needs rebuilding first.
 2. Extract the ZIP into a folder.
 3. Double-click **`六级词汇.exe`**. Keep `六级词汇.exe.config` beside it.
 
@@ -75,7 +79,7 @@ Automatic reading is off by default. Dictation ignores letter case and leading/t
 
 ## Bring your own vocabulary
 
-The included starter collection contains **348 original CET-6 preparation entries**, each with a Chinese meaning and an English example. It is a selected collection, **not a complete official CET-6 word list**.
+The formal collection contains **2,955 unique CET-6 entries** with part of speech, US IPA, Chinese definitions and bilingual examples. It draws primarily on the licensed OpenEtymology CET6 wordbook. It is not an official exhaustive exam syllabus. An upgrade also retains 47 unmatched older entries and their records outside the formal count.
 
 To study your own material, open **更多 → 词库管理 → 导入 CSV / XLSX**.
 
@@ -99,7 +103,7 @@ Chinese headers such as `单词`, `释义`, `例句` and `例句翻译` are also
 - **Separate progress:** each import creates a new vocabulary collection. Identical spellings in different collections keep independent learning records.
 - **Limits:** 50 MB per import file and 100,000 entries across all collections.
 
-Start with the [CSV template](data/词库导入模板.csv), or explore the [included vocabulary CSV](data/六级备考精选.csv). Import material you have permission to use. Details about the original data are in the [vocabulary and licensing notes](docs/词库与授权说明.md).
+Start with the [CSV template](data/词库导入模板.csv), or explore the [included vocabulary CSV](data/六级原词书.csv). Import material you have permission to use. Details about the data are in the [vocabulary and licensing notes](docs/词库与授权说明.md).
 
 ## Pronunciation, offline use and optional Azure Speech
 
@@ -164,7 +168,7 @@ For a separate study or test profile:
 
 The implemented review system tracks mistakes and consecutive correct answers. Scheduled spaced repetition (SRS), AI tutoring, cloud sync and mobile/web clients are not implemented. The documentation describes the existing Windows app rather than promising those features.
 
-For design choices and validation boundaries, read the [architecture notes](docs/架构与开发计划.md) and [acceptance report](docs/验收报告.md), currently in Chinese.
+For design choices and validation boundaries, read the [architecture notes](docs/V2.0实施清单.md) and [acceptance report](docs/V2.0验收报告.md), currently in Chinese.
 
 ## Contribute and support
 

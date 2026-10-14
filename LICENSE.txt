@@ -2,8 +2,10 @@ MIT License
 
 Copyright (c) 2026 CET6Word contributors
 
-This license covers the project source code and the original vocabulary data
-distributed with this project. It does not grant rights to user-imported data
+This license covers the project source code and the V1.7 original vocabulary data.
+V2.0 OpenEtymology-derived wordbook content and source extracts in data/ use
+CC BY-SA 4.0 instead (see data/audit/DATA_LICENSE.md and docs/词库与授权说明.md).
+CMU pronunciation data carries the notice in data/audit/CMU_LICENSE. It does not grant rights to user-imported data
 or third-party speech services, Windows, or the .NET Framework.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy

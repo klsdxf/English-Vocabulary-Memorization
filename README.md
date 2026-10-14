@@ -1,4 +1,3 @@
-::: {align="center"}
 # 📚 English Vocabulary Memorization
 
 ### A simple vocabulary tool that helps you focus on remembering words.
